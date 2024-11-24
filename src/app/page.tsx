@@ -5,7 +5,7 @@ import { CheckCircle, Clock, AlertCircle, Calendar, Code, TestTube, Rocket, Head
 const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: {
     icon: React.ElementType;
     phase: string;
-    weeks: number;
+    weeks: string;
     status: string;
     description: string;
     color: string;
@@ -26,8 +26,8 @@ const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: 
     <div className="ml-4 flex-grow p-3">
       <div className="flex items-center">
         <h3 className="text-lg font-semibold text-black">{phase}</h3>
-        <span className="ml-2 text-sm font-mono bg-yellow-100 px-2 py-1 rounded">
-          {weeks} weeks
+        <span className="ml-2 text-sm text-black font-mono bg-yellow-100 px-2 py-1 rounded">
+          {weeks}
         </span>
       </div>
       <p className="mt-1 text-gray-600">{description}</p>
@@ -47,8 +47,8 @@ const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: 
 const ProgressBar = ({ phase, completed }) => (
   <div className="mb-4 group">
     <div className="flex justify-between mb-1">
-      <span className="text-sm font-medium">{phase}</span>
-      <span className="text-sm font-medium">{completed}%</span>
+      <span className="text-sm font-medium text-black">{phase}</span>
+      <span className="text-sm font-medium text-black">{completed}%</span>
     </div>
     <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden relative">
       {/* Construction pattern background */}
@@ -72,14 +72,14 @@ const ProgramOfWorks = () => {
         </CardHeader>
         <CardContent>
           <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-4 text-yellow-900">Overall Progress</h3>
-            <ProgressBar phase="Total Project Completion" completed={15} />
+            <h3 className="text-lg font-semibold mb-4 text-black">Overall Progress</h3>
+            <ProgressBar phase="Total Project Completion" completed={20} />
           </div>
           
           <TimelineItem 
             icon={Calendar}
             phase="Phase 1: Planning & Design"
-            weeks={3}
+            weeks="weeks 1-3"
             status="Current"
             description="Requirements gathering and system design"
             color="bg-gradient-to-br from-blue-400 to-blue-600"
@@ -88,7 +88,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Code}
             phase="Phase 2: Building the System"
-            weeks={6}
+            weeks="weeks 4-6"
             status="Upcoming"
             description="Core development and special features implementation"
             color="bg-gradient-to-br from-purple-400 to-purple-600"
@@ -97,7 +97,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={TestTube}
             phase="Phase 3: Testing & Quality Checks"
-            weeks={7}
+            weeks="week 7"
             status="Upcoming"
             description="Comprehensive testing and quality assurance"
             color="bg-gradient-to-br from-orange-400 to-orange-600"
@@ -106,7 +106,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Rocket}
             phase="Phase 4: Launch & Training"
-            weeks={8}
+            weeks="weeks 8"
             status="Upcoming"
             description="System deployment and team training"
             color="bg-gradient-to-br from-green-400 to-green-600"
@@ -115,7 +115,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Headphones}
             phase="Phase 5: Support & Improvements"
-            weeks={9}
+            weeks="weeks 9+"
             status="Upcoming"
             description="Ongoing support and system optimization"
             color="bg-gradient-to-br from-red-400 to-red-600"
