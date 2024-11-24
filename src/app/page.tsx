@@ -16,7 +16,7 @@ const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: 
     </div>
     <div className="ml-4 flex-grow">
       <div className="flex items-center">
-        <h3 className="text-lg font-semibold">{phase}</h3>
+        <h3 className="text-lg font-semibold text-black">{phase}</h3>
         <span className="ml-2 text-sm text-gray-500">{weeks}</span>
       </div>
       <p className="mt-1 text-gray-600">{description}</p>
@@ -65,7 +65,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Calendar}
             phase="Phase 1: Planning & Design"
-            weeks={1-3}
+            weeks={3}
             status="Current"
             description="Requirements gathering and system design"
             color="bg-blue-500"
@@ -74,7 +74,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Code}
             phase="Phase 2: Building the System"
-            weeks={4-6}
+            weeks={6}
             status="Upcoming"
             description="Core development and special features implementation"
             color="bg-purple-500"
