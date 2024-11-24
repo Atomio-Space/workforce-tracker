@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, CheckCircle, Clock, AlertCircle, Calendar, Users, Code, TestTube, Rocket, Headphones } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { CheckCircle, Clock, AlertCircle, Calendar, Code, TestTube, Rocket, Headphones } from 'lucide-react';
 
 const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: { 
     icon: React.ElementType;
@@ -65,7 +65,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Calendar}
             phase="Phase 1: Planning & Design"
-            weeks="Weeks 1-3"
+            weeks={1-3}
             status="Current"
             description="Requirements gathering and system design"
             color="bg-blue-500"
@@ -74,7 +74,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Code}
             phase="Phase 2: Building the System"
-            weeks="Weeks 4-6"
+            weeks={4-6}
             status="Upcoming"
             description="Core development and special features implementation"
             color="bg-purple-500"
@@ -83,7 +83,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={TestTube}
             phase="Phase 3: Testing & Quality Checks"
-            weeks="Week 7"
+            weeks={7}
             status="Upcoming"
             description="Comprehensive testing and quality assurance"
             color="bg-orange-500"
@@ -92,7 +92,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Rocket}
             phase="Phase 4: Launch & Training"
-            weeks="Week 8"
+            weeks={8}
             status="Upcoming"
             description="System deployment and team training"
             color="bg-green-500"
@@ -101,7 +101,7 @@ const ProgramOfWorks = () => {
           <TimelineItem 
             icon={Headphones}
             phase="Phase 5: Support & Improvements"
-            weeks="Week 9+"
+            weeks={9}
             status="Upcoming"
             description="Ongoing support and system optimization"
             color="bg-red-500"
