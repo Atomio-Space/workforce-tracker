@@ -1,101 +1,128 @@
-import Image from "next/image";
+import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ArrowRight, CheckCircle, Clock, AlertCircle, Calendar, Users, Code, TestTube, Rocket, Headphones } from 'lucide-react';
 
-export default function Home() {
+const TimelineItem = ({ icon: Icon, phase, weeks, status, description, color }: { 
+    icon: React.ElementType;
+    phase: string; 
+    weeks: number; 
+    status: string; 
+    description: string; 
+    color: string; 
+}) => (
+  <div className="flex items-start mb-8 relative">
+    <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${color}`}>
+      <Icon className="w-6 h-6 text-white" />
+    </div>
+    <div className="ml-4 flex-grow">
+      <div className="flex items-center">
+        <h3 className="text-lg font-semibold">{phase}</h3>
+        <span className="ml-2 text-sm text-gray-500">{weeks}</span>
+      </div>
+      <p className="mt-1 text-gray-600">{description}</p>
+      <div className={`mt-2 inline-flex items-center px-3 py-1 rounded-full text-sm ${
+        status === 'Current' ? 'bg-blue-100 text-blue-800' :
+        status === 'Completed' ? 'bg-green-100 text-green-800' :
+        'bg-gray-100 text-gray-800'
+      }`}>
+        {status === 'Completed' ? <CheckCircle className="w-4 h-4 mr-1" /> :
+         status === 'Current' ? <Clock className="w-4 h-4 mr-1" /> :
+         <AlertCircle className="w-4 h-4 mr-1" />}
+        {status}
+      </div>
+    </div>
+  </div>
+);
+
+const ProgressBar = ({ phase, completed }) => (
+  <div className="mb-4">
+    <div className="flex justify-between mb-1">
+      <span className="text-sm font-medium">{phase}</span>
+      <span className="text-sm font-medium">{completed}%</span>
+    </div>
+    <div className="w-full bg-gray-200 rounded-full h-2.5">
+      <div 
+        className="bg-blue-600 h-2.5 rounded-full transition-all duration-500" 
+        style={{ width: `${completed}%` }}
+      ></div>
+    </div>
+  </div>
+);
+
+const ProgramOfWorks = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="w-full max-w-4xl mx-auto p-4">
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Project Timeline & Progress</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="mb-8">
+            <h3 className="text-lg font-semibold mb-4">Overall Progress</h3>
+            <ProgressBar phase="Total Project Completion" completed={15} />
+          </div>
+          
+          <TimelineItem 
+            icon={Calendar}
+            phase="Phase 1: Planning & Design"
+            weeks="Weeks 1-3"
+            status="Current"
+            description="Requirements gathering and system design"
+            color="bg-blue-500"
+          />
+          
+          <TimelineItem 
+            icon={Code}
+            phase="Phase 2: Building the System"
+            weeks="Weeks 4-6"
+            status="Upcoming"
+            description="Core development and special features implementation"
+            color="bg-purple-500"
+          />
+          
+          <TimelineItem 
+            icon={TestTube}
+            phase="Phase 3: Testing & Quality Checks"
+            weeks="Week 7"
+            status="Upcoming"
+            description="Comprehensive testing and quality assurance"
+            color="bg-orange-500"
+          />
+          
+          <TimelineItem 
+            icon={Rocket}
+            phase="Phase 4: Launch & Training"
+            weeks="Week 8"
+            status="Upcoming"
+            description="System deployment and team training"
+            color="bg-green-500"
+          />
+          
+          <TimelineItem 
+            icon={Headphones}
+            phase="Phase 5: Support & Improvements"
+            weeks="Week 9+"
+            status="Upcoming"
+            description="Ongoing support and system optimization"
+            color="bg-red-500"
+          />
+        </CardContent>
+      </Card>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Card>
+        <CardHeader>
+          <CardTitle>Key Milestones Progress</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ProgressBar phase="Requirements Documentation" completed={60} />
+          <ProgressBar phase="System Design" completed={30} />
+          <ProgressBar phase="Core Development" completed={0} />
+          <ProgressBar phase="Testing" completed={0} />
+          <ProgressBar phase="Training Materials" completed={0} />
+        </CardContent>
+      </Card>
     </div>
   );
-}
+};
+
+export default ProgramOfWorks;
