@@ -57,7 +57,7 @@ const ProgressBar = ({ phase, completed }) => (
         className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 h-full rounded-full transition-all duration-500 relative"
         style={{ width: `${completed}%` }}>
         {/* Animated construction effect */}
-        <div className="absolute inset-0 animate-[progress-slide_20s_linear_infinite] bg-[linear-gradient(-45deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)_10px,transparent_10px,transparent_20px)]" />
+        <div className="absolute  inset-0 animate-[progress-slide_20s_linear_infinite] bg-[linear-gradient(-45deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)_10px,transparent_10px,transparent_20px)]" />
       </div>
     </div>
   </div>
@@ -73,14 +73,14 @@ const ProgramOfWorks = () => {
         <CardContent>
           <div className="mb-8">
             <h3 className="text-lg font-semibold mb-4 text-black">Overall Progress</h3>
-            <ProgressBar phase="Total Project Completion" completed={20} />
+            <ProgressBar phase="Total Project Completion" completed={40} />
           </div>
           
           <TimelineItem 
             icon={Calendar}
             phase="Phase 1: Planning & Design"
             weeks="weeks 1-3"
-            status="Current"
+            status="Completed"
             description="Requirements gathering and system design"
             color="bg-gradient-to-br from-blue-400 to-blue-600"
           />
@@ -89,7 +89,7 @@ const ProgramOfWorks = () => {
             icon={Code}
             phase="Phase 2: Building the System"
             weeks="weeks 4-6"
-            status="Upcoming"
+            status="Current"
             description="Core development and special features implementation"
             color="bg-gradient-to-br from-purple-400 to-purple-600"
           />
@@ -98,7 +98,7 @@ const ProgramOfWorks = () => {
             icon={TestTube}
             phase="Phase 3: Testing & Quality Checks"
             weeks="week 7"
-            status="Upcoming"
+            status="Overdue"
             description="Comprehensive testing and quality assurance"
             color="bg-gradient-to-br from-orange-400 to-orange-600"
           />
@@ -107,7 +107,7 @@ const ProgramOfWorks = () => {
             icon={Rocket}
             phase="Phase 4: Launch & Training"
             weeks="weeks 8"
-            status="Upcoming"
+            status="Overdue"
             description="System deployment and team training"
             color="bg-gradient-to-br from-green-400 to-green-600"
           />
@@ -116,7 +116,7 @@ const ProgramOfWorks = () => {
             icon={Headphones}
             phase="Phase 5: Support & Improvements"
             weeks="weeks 9+"
-            status="Upcoming"
+            status="Overdue"
             description="Ongoing support and system optimization"
             color="bg-gradient-to-br from-red-400 to-red-600"
           />
@@ -128,11 +128,11 @@ const ProgramOfWorks = () => {
           <CardTitle className="text-2xl text-yellow-900">Key Milestones Progress</CardTitle>
         </CardHeader>
         <CardContent>
-          <ProgressBar phase="Requirements Documentation" completed={60} />
-          <ProgressBar phase="System Design" completed={30} />
-          <ProgressBar phase="Core Development" completed={0} />
-          <ProgressBar phase="Testing" completed={0} />
-          <ProgressBar phase="Training Materials" completed={0} />
+          <ProgressBar phase="Requirements Documentation" completed={100} />
+          <ProgressBar phase="System Design" completed={90} />
+          <ProgressBar phase="Core Development" completed={80} />
+          <ProgressBar phase="Testing" completed={10} />
+          <ProgressBar phase="Training Materials" completed={20} />
         </CardContent>
       </Card>
     </div>
